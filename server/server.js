@@ -4,6 +4,7 @@ const db = require('./config/connection');
 const routes = require('./routes');
 const { ApolloServer } = require('apollo-server-express');
 const { typeDefs, resolvers } = require('./utils/graphql'); 
+require('dotenv').config();
 
 const app = express();
 const PORT = process.env.PORT || 3001;
@@ -46,3 +47,7 @@ const startServer = async () => {
 startServer().catch((err) => {
   console.error('Error starting the server', err);
 });
+
+const crypto = require('crypto');
+const secret = crypto.randomBytes(64).toString('hex');
+console.log(secret);
